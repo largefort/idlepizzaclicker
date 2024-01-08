@@ -8,6 +8,44 @@
   <title>Pizza Clicker</title>
 </head>
 <body>
+
+  <!-- Language Selection Modal -->
+  <div class="modal" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="languageModalLabel">Choose Your Language</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nativeLanguage" class="form-label">Choose your native language:</label>
+              <select class="form-select" id="nativeLanguage">
+                <!-- Add language options here -->
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="is">Íslenska (Icelandic)</option>
+                <!-- Add more languages as needed -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="preferredLanguage" class="form-label">Choose the language you speak:</label>
+              <select class="form-select" id="preferredLanguage">
+                <!-- Add language options here -->
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="is">Íslenska (Icelandic)</option>
+                <!-- Add more languages as needed -->
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveLanguagePreferences()">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container mt-5">
     <h1 id="score" class="mb-4">Pizza: 0 (Prestige Points: 0)</h1>
     <button id="clickButton" class="btn btn-primary mb-3">Click to make pizza!</button>
@@ -19,7 +57,34 @@
       <button id="prestigeButton" class="btn btn-danger">Prestige (Lose progress, gain prestige points)</button>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    var languageModal = new bootstrap.Modal(document.getElementById('languageModal'), {
+      backdrop: 'static',
+      keyboard: false
+    });
+    
+    // Show the language selection modal on page load
+    window.onload = function () {
+      languageModal.show();
+    };
+
+    function saveLanguagePreferences() {
+      var nativeLanguage = document.getElementById('nativeLanguage').value;
+      var preferredLanguage = document.getElementById('preferredLanguage').value;
+
+      // Save language preferences to localStorage or a server, as needed
+      localStorage.setItem('nativeLanguage', nativeLanguage);
+      localStorage.setItem('preferredLanguage', preferredLanguage);
+
+      // Close the modal
+      languageModal.hide();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@20.5.0/dist/umd/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.1/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
 </body>
 </html>
