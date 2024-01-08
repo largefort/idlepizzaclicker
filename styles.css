@@ -1,0 +1,23 @@
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+#container {
+  margin-top: 50px;
+}
+
+#score {
+  font-size: 24px;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#upgradeContainer {
+  margin-top: 20px;
+}
